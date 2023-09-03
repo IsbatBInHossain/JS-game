@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+#canvas1 {
+  width: 600px;
+  height: 600px;
+}
+
+.controls {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+}
+.controls,
+select,
+option {
+  font-size: 25px;
+}
