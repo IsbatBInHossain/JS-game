@@ -13,7 +13,7 @@ const CANVAS_WIDTH = (canvas.width = 600)
 const CANVAS_HEIGHT = (canvas.height = 600)
 
 const playerImage = new Image()
-playerImage.src = 'assets/shadow_dog.png'
+playerImage.src = '../assets/1_Basic/shadow_dog.png'
 
 let gameFrame = 0
 let staggeredFrame = 6
