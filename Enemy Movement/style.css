@@ -1,5 +1,4 @@
 body {
-  background: black;
   display: flex;
   justify-content: center;
 }
@@ -19,7 +18,7 @@ body {
 }
 
 #canvas1 {
-  border: 3px solid white;
-  width: 800px;
-  height: 700px;
+  border: 3px solid black;
+  width: 500px;
+  height: 1000px;
 }
