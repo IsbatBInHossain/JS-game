@@ -3,42 +3,36 @@ const ctx = canvas.getContext('2d')
 const CANVAS_WIDTH = (canvas.width = 500)
 const CANVAS_HEIGHT = (canvas.height = 1000)
 
-const numberOfEnemy = 10
+const numberOfEnemy = 200
 const enemyArray = []
 let gameSpeed = 0
 
 class Enemy {
   constructor() {
     this.image = new Image()
-    this.image.src = '../assets/3_Movement/enemy4.png'
-    this.spriteWidth = 213
-    this.spriteHeight = 212
+    this.image.src = '../assets/3_Movement/enemy2.png'
+    this.spriteWidth = 266
+    this.spriteHeight = 188
+    this.frame = 0
+    this.speed = Math.random() * 4 + 1
     this.width = this.spriteWidth / 2
     this.height = this.spriteHeight / 2
     this.x = Math.random() * (CANVAS_WIDTH - this.width)
     this.y = Math.random() * (CANVAS_HEIGHT - this.height)
-    this.newX = Math.random() * (CANVAS_WIDTH - this.width)
-    this.newY = Math.random() * (CANVAS_HEIGHT - this.height)
-    this.speed = Math.random() * 4 + 1
-    this.xSpeed = Math.random() * 50 + 50
-    this.ySpeed = Math.random() * 50 + 50
-    this.frame = 0
-    this.flapSpeed = Math.floor(Math.random() * 3 + 2)
-    this.interval = Math.floor(Math.random() * 50 + 100)
+    this.flapSpeed = Math.floor(Math.random() * 5 + 3)
+    this.angle = 0
+    this.amplitude = Math.random() * 7
   }
   update() {
-    if (gameSpeed % this.interval === 0) {
-      this.newX = Math.random() * (CANVAS_WIDTH - this.width)
-      this.newY = Math.random() * (CANVAS_HEIGHT - this.height)
-    }
-    let dx = this.x - this.newX
-    let dy = this.y - this.newY
+    this.x -= this.speed
+    this.y += this.amplitude * Math.sin(this.angle)
 
-    this.x -= dx / this.xSpeed
-    this.y -= dy / this.ySpeed
+    if (this.angle > 1000) this.angle = 0
+    else this.angle = this.angle + Math.random() * 0.1
+
     if (this.x + this.width < 0) this.x = canvas.width
     if (gameSpeed % this.flapSpeed == 0) {
-      this.frame > 7 ? (this.frame = 0) : this.frame++
+      this.frame > 4 ? (this.frame = 0) : this.frame++
     }
   }
   draw() {
